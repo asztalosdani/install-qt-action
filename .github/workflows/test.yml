@@ -85,6 +85,13 @@ jobs:
           tools: tools_ifw tools_qtcreator,qt.tools.qtcreator
           cache: ${{ matrix.cache == 'cached' }}
 
+      - name: Install tools only
+        uses: ./
+        with:
+          version: ${{ matrix.version }}
+          tools: tools_ifw tools_qtcreator,qt.tools.qtcreator
+          cache: ${{ matrix.cache == 'cached' }}
+
       - name: Configure test project on windows
         if: startsWith(matrix.os, 'windows')
         env:
