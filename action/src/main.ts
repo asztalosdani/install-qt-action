@@ -331,12 +331,12 @@ const run = async (): Promise<void> => {
     }
 
     // Set environment variables
-    const qtPath = nativePath(glob.sync(`${inputs.versionDir}/**/*`)[0]);
     if (inputs.setEnv) {
       if (inputs.tools.length) {
         core.exportVariable("IQTA_TOOLS", nativePath(`${inputs.dir}/Tools`));
       }
       if (!inputs.toolsOnly) {
+        const qtPath = nativePath(glob.sync(`${inputs.versionDir}/**/*`)[0]);
         if (process.platform === "linux") {
           setOrAppendEnvVar("LD_LIBRARY_PATH", nativePath(`${qtPath}/lib`));
         }
